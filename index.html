@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경제 대시보드 - Economic Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>경제 대시보드</h1>
+            <p>나스닥 투자를 위한 경제 상황 파악</p>
+            <div class="button-group">
+                <button id="refreshBtn" class="refresh-btn">데이터 새로고침</button>
+                <button id="clearCacheBtn" class="refresh-btn" style="background: #f59e0b;">캐시 비우기</button>
+            </div>
+        </header>
+
+        <div id="apiWarning" class="api-warning" style="display: none;">
+            <strong>API 키 설정 필요:</strong> config.js 파일에서 API 키를 설정해주세요.<br>
+            <a href="https://fred.stlouisfed.org/docs/api/api_key.html" target="_blank">FRED API 키 발급</a> |
+            <a href="https://cloud.google.com/translate/docs/setup" target="_blank">Google Translation API 키 발급</a> |
+            <a href="https://www.alphavantage.co/support/#api-key" target="_blank">Alpha Vantage API 키 발급</a>
+        </div>
+
+        <div id="errorContainer"></div>
+
+        <!-- 환율 섹션 -->
+        <section class="section">
+            <h2>환율 정보</h2>
+            <div class="period-buttons">
+                <button class="period-btn" data-period="7">7일</button>
+                <button class="period-btn" data-period="30">30일</button>
+                <button class="period-btn" data-period="90">90일</button>
+                <button class="period-btn" data-period="180">6개월</button>
+                <button class="period-btn" data-period="365">1년</button>
+                <button class="period-btn reset-zoom-btn">리셋</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="exchangeRateChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 달러/원화 인덱스 섹션 -->
+        <section class="section">
+            <h2>달러 인덱스 & 원화 인덱스</h2>
+            <div class="chart-row">
+                <div class="chart-container">
+                    <canvas id="dollarIndexChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="krwIndexChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 경제 지표 섹션 -->
+        <section class="section">
+            <h2>주요 경제 지표</h2>
+            <div id="indicatorsContainer" class="indicator-grid">
+                <div class="loading">데이터를 불러오는 중...</div>
+            </div>
+        </section>
+
+        <!-- 추가 지표 섹션 -->
+        <section class="section">
+            <h2>추천 경제 지표 (나스닥 투자용)</h2>
+            <div id="additionalIndicatorsContainer" class="indicator-grid">
+                <div class="loading">데이터를 불러오는 중...</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="utils/api.js"></script>
+    <script src="utils/translator.js"></script>
+    <script src="utils/chart.js"></script>
+    <script src="data/indicators.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
