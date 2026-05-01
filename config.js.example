@@ -4,15 +4,15 @@
 const CONFIG = {
     // FRED API (Federal Reserve Economic Data)
     // 발급: https://fred.stlouisfed.org/docs/api/api_key.html
-    FRED_API_KEY: '728209a09d6bd9b910fc13a559766c68',
+    FRED_API_KEY: 'YOUR_FRED_API_KEY_HERE',
 
     // Google Cloud Translation API
     // 발급: https://cloud.google.com/translate/docs/setup
-    GOOGLE_TRANSLATE_API_KEY: 'AIzaSyDT72ZE4uajNIfnsRaReCtqMsjg2rN2gfQ',
+    GOOGLE_TRANSLATE_API_KEY: 'YOUR_GOOGLE_TRANSLATE_API_KEY_HERE',
 
     // Alpha Vantage API
     // 발급: https://www.alphavantage.co/support/#api-key
-    ALPHA_VANTAGE_API_KEY: 'DJHMQXSKOEA8SEBD',
+    ALPHA_VANTAGE_API_KEY: 'YOUR_ALPHA_VANTAGE_API_KEY_HERE',
 
     // 데이터 캐싱 설정 (밀리초)
     CACHE_DURATION: 60 * 60 * 1000, // 1시간
